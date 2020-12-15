@@ -11,4 +11,9 @@ class App : Application() {
         super.onCreate()
         FirebaseApp.initializeApp(this)
     }
+
+    companion object {
+        lateinit var instance: App
+            private set
+    }
 }
