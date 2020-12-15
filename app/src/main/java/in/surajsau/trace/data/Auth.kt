@@ -1,8 +1,6 @@
 package `in`.surajsau.trace.data
 
 import android.app.Activity
-import com.google.android.gms.tasks.OnSuccessListener
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.OAuthCredential
 import com.google.firebase.auth.OAuthProvider
@@ -21,7 +19,9 @@ class Auth @Inject constructor(
         val pendingAuth = firebaseAuth.pendingAuthResult
         if (pendingAuth != null) {
             pendingAuth
-                .addOnSuccessListener { onSuccess(it as OAuthCredential) }
+                .addOnSuccessListener {
+                    (it.credential as? OAuthCredential)?.let(onSuccess) ?: onFailure(Exception("Invalid data"))
+                }
                 .addOnFailureListener(onFailure)
         } else {
             val provider = OAuthProvider.newBuilder("github.com").apply {
@@ -30,7 +30,9 @@ class Auth @Inject constructor(
 
             firebaseAuth
                 .startActivityForSignInWithProvider(activity, provider.build())
-                .addOnSuccessListener { onSuccess(it as OAuthCredential) }
+                .addOnSuccessListener {
+                    (it.credential as? OAuthCredential)?.let(onSuccess) ?: onFailure(Exception("Invalid data"))
+                }
                 .addOnFailureListener(onFailure)
         }
     }
