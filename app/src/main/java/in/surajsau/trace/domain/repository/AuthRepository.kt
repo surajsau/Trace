@@ -3,6 +3,7 @@ package `in`.surajsau.trace.domain.repository
 import `in`.surajsau.trace.androidx.Optional
 import `in`.surajsau.trace.data.AppPreference
 import `in`.surajsau.trace.data.Auth
+import `in`.surajsau.trace.data.PrefKey
 import android.app.Activity
 import io.reactivex.Completable
 import io.reactivex.subjects.BehaviorSubject
@@ -29,7 +30,7 @@ class AuthRepositoryImpl @Inject constructor(
         auth.authenticate(
             activity = authCallbackActivity,
             onSuccess = {
-                preference.save(key = "token", value = it.accessToken)
+                preference.save(key = PrefKey.TOKEN, value = it.accessToken)
                 error.onNext(Optional.empty())
             },
             onFailure = {
@@ -48,6 +49,6 @@ class AuthRepositoryImpl @Inject constructor(
     }
 
     override fun isAuthenticated(): Boolean {
-        return preference.has(key = "token")
+        return preference.has(key = PrefKey.TOKEN)
     }
 }

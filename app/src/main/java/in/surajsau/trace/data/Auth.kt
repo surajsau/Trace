@@ -7,11 +7,16 @@ import com.google.firebase.auth.OAuthProvider
 import java.lang.Exception
 import javax.inject.Inject
 
-class Auth @Inject constructor(
-    private val firebaseAuth: FirebaseAuth
-) {
+interface Auth {
 
-    fun authenticate(
+    fun authenticate(activity: Activity, onSuccess: (OAuthCredential) -> Unit, onFailure: (Exception) -> Unit)
+}
+
+class AuthImpl @Inject constructor(
+    private val firebaseAuth: FirebaseAuth
+) : Auth {
+
+    override fun authenticate(
         activity: Activity,
         onSuccess: (OAuthCredential) -> Unit,
         onFailure: (Exception) -> Unit

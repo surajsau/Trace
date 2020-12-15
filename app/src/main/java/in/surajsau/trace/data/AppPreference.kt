@@ -5,10 +5,16 @@ import androidx.core.content.edit
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
-interface AppPreference {
-    fun save(key: String, value: String)
+enum class PrefKey(val value: String) {
+    TOKEN(value = "token")
+}
 
-    fun has(key: String): Boolean
+interface AppPreference {
+    fun save(key: PrefKey, value: String)
+
+    fun get(key: PrefKey): String
+
+    fun has(key: PrefKey): Boolean
 }
 
 class AppPreferenceImpl @Inject constructor(
@@ -16,13 +22,17 @@ class AppPreferenceImpl @Inject constructor(
 ) : AppPreference {
     private val sharedPreference = context.getSharedPreferences("Trace", Context.MODE_PRIVATE)
 
-    override fun save(key: String, value: String) {
+    override fun save(key: PrefKey, value: String) {
         sharedPreference.edit {
-            putString(key, value)
+            putString(key.value, value)
         }
     }
 
-    override fun has(key: String): Boolean {
-        return sharedPreference.contains(key)
+    override fun get(key: PrefKey): String {
+        return sharedPreference.getString(key.value, "")!!
+    }
+
+    override fun has(key: PrefKey): Boolean {
+        return sharedPreference.contains(key.value)
     }
 }
