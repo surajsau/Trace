@@ -14,6 +14,8 @@ interface AuthRepository {
     fun authenticate(authCallbackActivity: Activity)
 
     fun watchResult(): Completable
+
+    fun isAuthenticated(): Boolean
 }
 
 class AuthRepositoryImpl @Inject constructor(
@@ -27,7 +29,7 @@ class AuthRepositoryImpl @Inject constructor(
         auth.authenticate(
             activity = authCallbackActivity,
             onSuccess = {
-                preference.save("token", it.accessToken)
+                preference.save(key = "token", value = it.accessToken)
                 error.onNext(Optional.empty())
             },
             onFailure = {
@@ -43,5 +45,9 @@ class AuthRepositoryImpl @Inject constructor(
             else
                 Completable.error(it.value)
         }
+    }
+
+    override fun isAuthenticated(): Boolean {
+        return preference.has(key = "token")
     }
 }
