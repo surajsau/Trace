@@ -5,9 +5,7 @@ import androidx.core.content.edit
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
-enum class PrefKey(val value: String) {
-    TOKEN(value = "token")
-}
+inline class PrefKey(val value: String)
 
 interface AppPreference {
     fun save(key: PrefKey, value: String)

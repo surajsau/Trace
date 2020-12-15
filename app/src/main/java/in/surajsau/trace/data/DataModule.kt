@@ -1,5 +1,7 @@
 package `in`.surajsau.trace.data
 
+import `in`.surajsau.trace.data.interceptor.HeaderInterceptor
+import `in`.surajsau.trace.data.user.UserApi
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.firebase.auth.FirebaseAuth
 import dagger.Binds
@@ -33,8 +35,9 @@ abstract class DataModule {
 
         @Singleton
         @Provides
-        fun retrofit(): Retrofit {
+        fun retrofit(headerInterceptor: HeaderInterceptor): Retrofit {
             val okhttp = OkHttpClient.Builder()
+                .addInterceptor(headerInterceptor)
                 .addNetworkInterceptor(StethoInterceptor())
                 .build()
 
@@ -44,5 +47,9 @@ abstract class DataModule {
                 .client(okhttp)
                 .build()
         }
+
+        @Singleton
+        @Provides
+        fun apiService(retrofit: Retrofit) = retrofit.create(UserApi::class.java)
     }
 }

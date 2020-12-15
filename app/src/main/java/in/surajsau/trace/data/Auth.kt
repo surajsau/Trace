@@ -7,6 +7,8 @@ import com.google.firebase.auth.OAuthProvider
 import java.lang.Exception
 import javax.inject.Inject
 
+inline class AuthScope(val value: String)
+
 interface Auth {
 
     fun authenticate(activity: Activity, onSuccess: (OAuthCredential) -> Unit, onFailure: (Exception) -> Unit)
@@ -30,7 +32,7 @@ class AuthImpl @Inject constructor(
                 .addOnFailureListener(onFailure)
         } else {
             val provider = OAuthProvider.newBuilder("github.com").apply {
-                scopes = listOf("user:email", "read:user", "read:org")
+                scopes = listOf(SCOPE_USER.value, SCOPE_READ_ORG.value)
             }
 
             firebaseAuth
