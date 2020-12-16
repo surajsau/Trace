@@ -46,6 +46,7 @@ abstract class DataModule {
                 .build()
 
             return Retrofit.Builder()
+                .baseUrl(API_ENDPOINT)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(JacksonConverterFactory.create())
                 .client(okhttp)
