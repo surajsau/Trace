@@ -3,17 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_home"
-    app:startDestination="@id/profileFragment">
+    app:startDestination="@id/menu_home">
 
     <fragment
-        android:id="@+id/profileFragment"
+        android:id="@id/menu_profile"
         android:name="in.surajsau.trace.ui.profile.ProfileFragment"
         tools:layout="@layout/fragment_profile"
         android:label="ProfileFragment" />
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/menu_home"
         android:name="in.surajsau.trace.ui.home.HomeFragment"
         tools:layout="@layout/fragment_home"
         android:label="HomeFragment" />
+
+    <fragment
+        android:id="@id/menu_explore"
+        android:name="in.surajsau.trace.ui.explore.ExploreFragment"
+        android:label="ExploreFragment"
+        tools:layout="@layout/fragment_explore"/>
+
+    <fragment
+        android:id="@id/menu_notification"
+        android:name="in.surajsau.trace.ui.notifications.NotificationFragment"
+        android:label="NotificationFragment"
+        tools:layout="@layout/fragment_notifications"/>
 </navigation>
