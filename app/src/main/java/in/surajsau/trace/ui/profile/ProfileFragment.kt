@@ -10,10 +10,10 @@ import android.view.View
 import android.view.ViewOutlineProvider
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import coil.Coil
 import coil.ImageLoader
 import coil.request.ImageRequest
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment<FragmentProfileBinding>() {
@@ -23,8 +23,7 @@ class ProfileFragment : Fragment<FragmentProfileBinding>() {
 
     private val viewModel: ProfileFragmentViewModel by viewModels()
 
-    @Inject
-    lateinit var imageLoader: ImageLoader
+    private val imageLoader: ImageLoader by lazy { Coil.imageLoader(requireContext()) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

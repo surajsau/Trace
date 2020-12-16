@@ -18,11 +18,4 @@ abstract class AppModule {
     @Singleton
     @Binds
     abstract fun provideSchedulerProvider(schedulerProviderImpl: SchedulerProviderImpl): SchedulerProvider
-
-    companion object {
-
-        @Singleton
-        @Binds
-        fun imageLoader(@ApplicationContext context: Context) = Coil.imageLoader(context)
-    }
 }

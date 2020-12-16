@@ -35,6 +35,10 @@ abstract class DataModule {
 
         @Singleton
         @Provides
+        fun headerInterceptor(preference: AppPreference) = HeaderInterceptor(preference = preference)
+
+        @Singleton
+        @Provides
         fun retrofit(headerInterceptor: HeaderInterceptor): Retrofit {
             val okhttp = OkHttpClient.Builder()
                 .addInterceptor(headerInterceptor)
@@ -50,6 +54,6 @@ abstract class DataModule {
 
         @Singleton
         @Provides
-        fun apiService(retrofit: Retrofit) = retrofit.create(UserApi::class.java)
+        fun apiService(retrofit: Retrofit): UserApi = retrofit.create(UserApi::class.java)
     }
 }
