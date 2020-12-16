@@ -1,9 +1,6 @@
 package `in`.surajsau.trace.domain
 
-import `in`.surajsau.trace.domain.repository.AuthRepository
-import `in`.surajsau.trace.domain.repository.AuthRepositoryImpl
-import `in`.surajsau.trace.domain.repository.UserRepository
-import `in`.surajsau.trace.domain.repository.UserRepositoryImpl
+import `in`.surajsau.trace.domain.repository.*
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -21,4 +18,8 @@ abstract class RepositoryModule {
     @Singleton
     @Binds
     abstract fun userRepository(userRepositoryImpl: UserRepositoryImpl): UserRepository
+
+    @Singleton
+    @Binds
+    abstract fun repoRepository(repoRepositoryImpl: RepoRepositoryImpl): RepoRepository
 }

@@ -1,6 +1,7 @@
 package `in`.surajsau.trace.data
 
 import `in`.surajsau.trace.data.interceptor.HeaderInterceptor
+import `in`.surajsau.trace.data.user.RepoApi
 import `in`.surajsau.trace.data.user.UserApi
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.firebase.auth.FirebaseAuth
@@ -55,6 +56,10 @@ abstract class DataModule {
 
         @Singleton
         @Provides
-        fun apiService(retrofit: Retrofit): UserApi = retrofit.create(UserApi::class.java)
+        fun userApi(retrofit: Retrofit): UserApi = retrofit.create(UserApi::class.java)
+
+        @Singleton
+        @Provides
+        fun repoApi(retrofit: Retrofit): RepoApi = retrofit.create(RepoApi::class.java)
     }
 }

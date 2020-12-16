@@ -23,7 +23,6 @@ class RepoRepositoryImpl @Inject constructor(
 
     override fun fetchAll(): Completable {
         return repoApi.repositories()
-                .ignoreElement()
-
+            .ignoreElement()
     }
 }
