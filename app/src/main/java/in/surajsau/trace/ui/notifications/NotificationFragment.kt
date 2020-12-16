@@ -1,16 +1,13 @@
 package `in`.surajsau.trace.ui.notifications
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import `in`.surajsau.trace.R
+import `in`.surajsau.trace.androidx.Fragment
+import `in`.surajsau.trace.databinding.FragmentNotificationsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class NotificationFragment : Fragment() {
+class NotificationFragment : Fragment<FragmentNotificationsBinding>() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
+    override val layoutId: Int
+        get() = R.layout.fragment_notifications
 }

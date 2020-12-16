@@ -1,37 +1,61 @@
 package `in`.surajsau.trace.ui.profile
 
+import `in`.surajsau.trace.R
+import `in`.surajsau.trace.androidx.Fragment
 import `in`.surajsau.trace.androidx.dp
 import `in`.surajsau.trace.databinding.FragmentProfileBinding
 import android.graphics.Outline
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.ViewOutlineProvider
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import coil.ImageLoader
+import coil.request.ImageRequest
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class ProfileFragment : Fragment() {
+class ProfileFragment : Fragment<FragmentProfileBinding>() {
 
-    lateinit var binding: FragmentProfileBinding
+    override val layoutId: Int
+        get() = R.layout.fragment_profile
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
+    private val viewModel: ProfileFragmentViewModel by viewModels()
+
+    @Inject
+    lateinit var imageLoader: ImageLoader
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.profilePicture.outlineProvider = object : ViewOutlineProvider() {
-            override fun getOutline(view: View?, outline: Outline?) {
-                view ?: return
-                outline?.setRoundRect(0, 0, view.width, view.height, 8.dp.value)
+        binding.profileHeader.let {
+            it.profilePicture.outlineProvider = object : ViewOutlineProvider() {
+                override fun getOutline(view: View?, outline: Outline?) {
+                    view ?: return
+                    outline?.setRoundRect(0, 0, view.width, view.height, 8.dp.value)
+                }
             }
         }
+
+        viewModel.model.observe(
+            viewLifecycleOwner,
+            Observer { model ->
+                binding.profileHeader.let {
+                    it.profileName.text = model.profileName
+                    it.profileOrganisation.text = model.profileOrganisation
+                    it.profileLocation.text = model.profileLocation
+
+                    imageLoader.enqueue(
+                        request = ImageRequest.Builder(requireContext())
+                            .data(data = model.profileImage)
+                            .target(imageView = it.profilePicture)
+                            .build()
+                    )
+                }
+            }
+        )
+
+        viewModel.onViewCreated()
     }
 }

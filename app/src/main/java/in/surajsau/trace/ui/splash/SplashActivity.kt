@@ -3,6 +3,7 @@ package `in`.surajsau.trace.ui.splash
 import `in`.surajsau.trace.R
 import `in`.surajsau.trace.domain.repository.AuthRepository
 import `in`.surajsau.trace.ui.login.LoginActivity
+import `in`.surajsau.trace.ui.main.MainActivity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -20,10 +21,11 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         if (authRepository.isAuthenticated()) {
-            // .. do nothing
+            startActivity(Intent(this, MainActivity::class.java))
         } else {
             startActivity(Intent(this, LoginActivity::class.java))
-            finishAffinity()
         }
+
+        finishAffinity()
     }
 }

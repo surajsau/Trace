@@ -1,16 +1,13 @@
 package `in`.surajsau.trace.ui.explore
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import `in`.surajsau.trace.R
+import `in`.surajsau.trace.androidx.Fragment
+import `in`.surajsau.trace.databinding.FragmentExploreBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ExploreFragment : Fragment() {
+class ExploreFragment : Fragment<FragmentExploreBinding>() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
+    override val layoutId: Int
+        get() = R.layout.fragment_explore
 }
