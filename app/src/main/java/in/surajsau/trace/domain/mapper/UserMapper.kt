@@ -16,5 +16,6 @@ fun User.mapToDomain() = `in`.surajsau.trace.domain.model.User(
     following = following,
     publicRepos = publicRepos,
     totalPrivateRepos = totalPrivateRepos,
-    collaborators = collaborators
+    collaborators = collaborators,
+    handle = handle
 )
