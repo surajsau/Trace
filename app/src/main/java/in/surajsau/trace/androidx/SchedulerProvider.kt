@@ -13,8 +13,8 @@ interface SchedulerProvider {
 class SchedulerProviderImpl @Inject constructor() : SchedulerProvider {
 
     override val io: Scheduler
-        get() = AndroidSchedulers.mainThread()
+        get() = Schedulers.io()
 
     override val ui: Scheduler
-        get() = Schedulers.io()
+        get() = AndroidSchedulers.mainThread()
 }

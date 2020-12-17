@@ -21,14 +21,14 @@ class ProfileFragmentViewModel @ViewModelInject constructor(
         fetchUser.invoke()
             .subscribeOn(schedulerProvider.io)
             .observeOn(schedulerProvider.ui)
-            .subscribe({}, {})
+            .subscribe({}, { it.printStackTrace() })
             .disposeBy(disposables)
 
         watchUser.invoke()
             .map { it.toProfileFragmentModel() }
             .subscribeOn(schedulerProvider.io)
             .observeOn(schedulerProvider.ui)
-            .subscribe({ model.value = it }, {})
+            .subscribe({ model.value = it }, { it.printStackTrace() })
             .disposeBy(disposables)
     }
 

@@ -44,6 +44,7 @@ class ProfileFragment : Fragment<FragmentProfileBinding>() {
                     it.profileName.text = model.profileName
                     it.profileOrganisation.text = model.profileOrganisation
                     it.profileLocation.text = model.profileLocation
+                    it.profileHandle.text = model.profileHandle
 
                     imageLoader.enqueue(
                         request = ImageRequest.Builder(requireContext())
