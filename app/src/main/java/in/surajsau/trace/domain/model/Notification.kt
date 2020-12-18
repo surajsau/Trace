@@ -1,7 +1,13 @@
 package `in`.surajsau.trace.domain.model
 
 enum class NotificationType(val value: String) {
+    RELEASE("Release"),
+    PULL_REQUEST("PullRequest"),
     ISSUE("issue");
+
+    companion object {
+        fun from(strValue: String) = values().first { it.value == strValue }
+    }
 }
 
 data class Notification(

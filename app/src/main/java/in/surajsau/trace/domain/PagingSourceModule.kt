@@ -1,5 +1,6 @@
 package `in`.surajsau.trace.domain
 
+import `in`.surajsau.trace.androidx.SchedulerProvider
 import `in`.surajsau.trace.data.api.NotificationApi
 import `in`.surajsau.trace.data.api.RepoApi
 import `in`.surajsau.trace.domain.paging.NotificationPagingSource
@@ -16,8 +17,11 @@ class PagingSourceModule {
 
     @Singleton
     @Provides
-    fun notificationPagingSource(notificationApi: NotificationApi) =
-        NotificationPagingSource(notificationApi = notificationApi)
+    fun notificationPagingSource(notificationApi: NotificationApi, schedulerProvider: SchedulerProvider) =
+        NotificationPagingSource(
+            notificationApi = notificationApi,
+            schedulerProvider = schedulerProvider
+        )
 
     @Singleton
     @Provides

@@ -9,7 +9,5 @@ fun Notification.mapToDomain() = `in`.surajsau.trace.domain.model.Notification(
     isUnread = unread,
     repo = repository.mapToDomain(),
     url = subject.url,
-    type = subject.type.mapToNotificationType()
+    type = NotificationType.from(strValue = subject.type)
 )
-
-fun String.mapToNotificationType() = NotificationType.valueOf(value = this)

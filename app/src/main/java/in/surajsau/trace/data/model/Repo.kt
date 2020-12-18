@@ -8,8 +8,8 @@ data class Repo(
     @JsonProperty("id") val id: Int,
     @JsonProperty("name") val name: String,
     @JsonProperty("full_name")val fullName: String,
-    @JsonProperty("owner") val owner: User,
+    @JsonProperty("owner") val owner: Owner,
     @JsonProperty("private") val private: Boolean,
-    @JsonProperty("description") val description: String,
+    @JsonProperty("description") val description: String?,
     @JsonProperty("fork") val fork: Boolean
 )

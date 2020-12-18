@@ -7,7 +7,11 @@ import com.google.firebase.auth.OAuthProvider
 import java.lang.Exception
 import javax.inject.Inject
 
-inline class AuthScope(val value: String)
+enum class AuthScope(val value: String) {
+    USER(value = "user"),
+    NOTIFICATION(value = "notifications"),
+    READ_ORG(value = "read:org");
+}
 
 interface Auth {
 
@@ -32,7 +36,8 @@ class AuthImpl @Inject constructor(
                 .addOnFailureListener(onFailure)
         } else {
             val provider = OAuthProvider.newBuilder("github.com").apply {
-                scopes = listOf(SCOPE_USER.value, SCOPE_READ_ORG.value)
+                scopes = listOf(AuthScope.USER, AuthScope.READ_ORG, AuthScope.NOTIFICATION)
+                    .map { it.value }
             }
 
             firebaseAuth

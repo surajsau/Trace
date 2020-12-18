@@ -64,6 +64,6 @@ data class NotificationAdapterModel(
 
 fun Notification.toAdapterModel() = NotificationAdapterModel(
     title = title,
-    repositoryDisplayName = "${repo.owner.handle} / ${repo.name}",
+    repositoryDisplayName = repo.fullName,
     isMerged = false
 )
