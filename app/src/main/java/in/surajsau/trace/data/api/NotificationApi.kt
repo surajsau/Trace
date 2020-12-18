@@ -1,4 +1,4 @@
-package `in`.surajsau.trace.data.user
+package `in`.surajsau.trace.data.api
 
 import `in`.surajsau.trace.data.model.Notification
 import io.reactivex.Single

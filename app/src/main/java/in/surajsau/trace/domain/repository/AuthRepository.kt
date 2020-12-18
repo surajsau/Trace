@@ -4,7 +4,6 @@ import `in`.surajsau.trace.androidx.Optional
 import `in`.surajsau.trace.data.AppPreference
 import `in`.surajsau.trace.data.Auth
 import `in`.surajsau.trace.data.PREF_TOKEN
-import `in`.surajsau.trace.data.PrefKey
 import android.app.Activity
 import io.reactivex.Completable
 import io.reactivex.subjects.BehaviorSubject

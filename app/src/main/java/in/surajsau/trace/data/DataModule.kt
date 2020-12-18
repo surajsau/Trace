@@ -1,8 +1,8 @@
 package `in`.surajsau.trace.data
 
 import `in`.surajsau.trace.data.interceptor.HeaderInterceptor
-import `in`.surajsau.trace.data.user.RepoApi
-import `in`.surajsau.trace.data.user.UserApi
+import `in`.surajsau.trace.data.api.RepoApi
+import `in`.surajsau.trace.data.api.UserApi
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.firebase.auth.FirebaseAuth
 import dagger.Binds

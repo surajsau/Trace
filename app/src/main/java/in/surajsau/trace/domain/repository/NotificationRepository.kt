@@ -1,6 +1,6 @@
 package `in`.surajsau.trace.domain.repository
 
-import `in`.surajsau.trace.data.user.NotificationApi
+import `in`.surajsau.trace.data.api.NotificationApi
 import `in`.surajsau.trace.domain.mapper.mapToDomain
 import `in`.surajsau.trace.domain.model.Notification
 import io.reactivex.Completable
@@ -25,7 +25,7 @@ class NotificationRepositoryImpl constructor(
             .doOnSuccess { response ->
                 notifications.onNext(response.map { it.mapToDomain() })
             }
-            .ignoreElement()
+            .toCompletable()
     }
 
     override fun watchNotifications() = notifications
