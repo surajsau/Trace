@@ -7,7 +7,7 @@ import `in`.surajsau.trace.domain.usecase.WatchUser
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 class ProfileFragmentViewModel @ViewModelInject constructor(
     private val fetchUser: FetchUser,

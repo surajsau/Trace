@@ -5,8 +5,8 @@ import `in`.surajsau.trace.data.AppPreference
 import `in`.surajsau.trace.data.Auth
 import `in`.surajsau.trace.data.PREF_TOKEN
 import android.app.Activity
-import io.reactivex.Completable
-import io.reactivex.subjects.BehaviorSubject
+import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.subjects.BehaviorSubject
 import java.lang.Exception
 import javax.inject.Inject
 

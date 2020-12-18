@@ -3,9 +3,9 @@ package `in`.surajsau.trace.domain.repository
 import `in`.surajsau.trace.data.api.UserApi
 import `in`.surajsau.trace.domain.mapper.mapToDomain
 import `in`.surajsau.trace.domain.model.User
-import io.reactivex.Completable
-import io.reactivex.Observable
-import io.reactivex.subjects.BehaviorSubject
+import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.subjects.BehaviorSubject
 import javax.inject.Inject
 
 interface UserRepository {
@@ -24,7 +24,7 @@ class UserRepositoryImpl @Inject constructor(
     override fun fetchUser(): Completable {
         return api.user()
             .doOnSuccess { user.onNext(it.mapToDomain()) }
-            .toCompletable()
+            .ignoreElement()
     }
 
     override fun watchUser(): Observable<User> = user

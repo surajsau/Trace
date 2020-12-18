@@ -6,7 +6,7 @@ import `in`.surajsau.trace.domain.usecase.Authenticate
 import `in`.surajsau.trace.domain.usecase.WatchAuthentication
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
-import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 class LoginActivityViewModel @ViewModelInject constructor(
     private val authenticate: Authenticate,
