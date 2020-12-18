@@ -2,6 +2,8 @@ package `in`.surajsau.trace.domain
 
 import `in`.surajsau.trace.domain.repository.AuthRepository
 import `in`.surajsau.trace.domain.repository.AuthRepositoryImpl
+import `in`.surajsau.trace.domain.repository.NotificationRepository
+import `in`.surajsau.trace.domain.repository.NotificationRepositoryImpl
 import `in`.surajsau.trace.domain.repository.RepoRepository
 import `in`.surajsau.trace.domain.repository.RepoRepositoryImpl
 import `in`.surajsau.trace.domain.repository.UserRepository
@@ -27,4 +29,8 @@ abstract class RepositoryModule {
     @Singleton
     @Binds
     abstract fun repoRepository(repoRepositoryImpl: RepoRepositoryImpl): RepoRepository
+
+    @Singleton
+    @Binds
+    abstract fun notificationRepository(notificationRepositoryImpl: NotificationRepositoryImpl): NotificationRepository
 }

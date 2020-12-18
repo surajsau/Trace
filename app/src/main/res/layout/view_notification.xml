@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/pull_request_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:srcCompat="@drawable/ic_pull_request"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="16dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/notification_repository_display_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_text_gray"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/pull_request_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/pull_request_icon"
+            android:includeFontPadding="false"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            tools:text="goodpatch/ny50-android #725"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/notification_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_text"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@id/notification_repository_display_name"
+            app:layout_constraintTop_toBottomOf="@id/notification_repository_display_name"
+            app:layout_constraintBottom_toTopOf="@id/bottom_margin"
+            app:layout_constraintEnd_toEndOf="@id/notification_repository_display_name"
+            android:includeFontPadding="false"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_marginTop="8dp"
+            tools:text="健康フェス：習得飲料クーポンモーダル非表示にする"/>
+
+        <Space
+            android:id="@+id/bottom_margin"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/color_divider"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

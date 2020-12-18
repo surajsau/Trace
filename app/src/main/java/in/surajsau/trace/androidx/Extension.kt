@@ -2,8 +2,11 @@ package `in`.surajsau.trace.androidx
 
 import `in`.surajsau.trace.App
 import android.util.TypedValue
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
+import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 
 fun Disposable.disposeBy(disposable: CompositeDisposable) = disposable.add(this)
 
@@ -20,3 +23,5 @@ val Float.dp: Dp
 
 val Int.dp: Dp
     get() = this.toFloat().dp
+
+fun RecyclerView.ViewHolder.getImageDrawable(@DrawableRes id: Int) = ContextCompat.getDrawable(itemView.context, id)

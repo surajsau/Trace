@@ -10,5 +10,6 @@ data class Notification(
     val isUnread: Boolean,
     val repo: Repo,
     val url: String,
-    val type: NotificationType
+    val type: NotificationType,
+    val isMerged: Boolean = false
 )

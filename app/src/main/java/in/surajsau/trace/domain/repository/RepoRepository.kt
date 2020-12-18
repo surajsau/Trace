@@ -28,7 +28,8 @@ interface RepoRepository {
 }
 
 class RepoRepositoryImpl @Inject constructor(
-    private val repoApi: RepoApi
+    private val repoApi: RepoApi,
+    private val repoPagingSource: RepoPagingSource
 ) : RepoRepository {
 
     private val repos = BehaviorSubject.create<PagingData<Repo>>()
@@ -37,7 +38,7 @@ class RepoRepositoryImpl @Inject constructor(
         return Pager(
             initialKey = 0,
             config = PagingConfig(pageSize = 20, enablePlaceholders = false),
-            pagingSourceFactory = { RepoPagingSource(repoApi = repoApi) }
+            pagingSourceFactory = { repoPagingSource }
         ).flowable
             .doOnNext { repos.onNext(it) }
             .ignoreElements()

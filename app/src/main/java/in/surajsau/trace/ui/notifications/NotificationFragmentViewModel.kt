@@ -6,9 +6,8 @@ import `in`.surajsau.trace.domain.usecase.FetchReadNotifications
 import `in`.surajsau.trace.domain.usecase.FetchUnreadNotifications
 import `in`.surajsau.trace.domain.usecase.WatchNotifications
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 class NotificationFragmentViewModel @ViewModelInject constructor(
     private val fetchReadNotifications: FetchReadNotifications,
@@ -17,10 +16,11 @@ class NotificationFragmentViewModel @ViewModelInject constructor(
     private val schedulerProvider: SchedulerProvider
 ) : ViewModel() {
 
-    val notifications = MutableLiveData<Notifications>()
+    val notifications = watchNotifications.invoke()
 
     fun onViewCreated() {
-        watchNotifications.invoke()
+
+        fetchUnreadNotifications.invoke()
             .subscribeOn(schedulerProvider.io)
             .observeOn(schedulerProvider.ui)
             .subscribe(

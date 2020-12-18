@@ -16,6 +16,8 @@
 
     <color name="color_background">#EDEEF3</color>
 
+    <color name="color_divider">#F2F2F3</color>
+
     <color name="color_icon_repository">#935CD9</color>
     <color name="color_icon_organisation">#FF7E00</color>
     <color name="color_icon_starred">#FFC500</color>
