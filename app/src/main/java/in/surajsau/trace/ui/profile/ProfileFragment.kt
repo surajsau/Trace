@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewOutlineProvider
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import coil.Coil
 import coil.ImageLoader
 import coil.request.ImageRequest
@@ -25,6 +26,10 @@ class ProfileFragment : Fragment<FragmentProfileBinding>() {
 
     private val imageLoader: ImageLoader by lazy { Coil.imageLoader(requireContext()) }
 
+    private val pinnedRepositoryAdapter: PinnedRepositoryAdapter by lazy {
+        PinnedRepositoryAdapter(imageLoader = imageLoader)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -36,6 +41,9 @@ class ProfileFragment : Fragment<FragmentProfileBinding>() {
                 }
             }
         }
+
+        binding.pinnedRepoList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.pinnedRepoList.adapter = pinnedRepositoryAdapter
 
         viewModel.model.observe(
             viewLifecycleOwner,
@@ -54,6 +62,11 @@ class ProfileFragment : Fragment<FragmentProfileBinding>() {
                     )
                 }
             }
+        )
+
+        viewModel.pinnedRepos.observe(
+            viewLifecycleOwner,
+            Observer { pinnedRepositoryAdapter.setData(items = it) }
         )
 
         viewModel.onViewCreated()

@@ -1,6 +1,7 @@
 package `in`.surajsau.trace.domain.model
 
 enum class OwnerType(val value: String) {
+    USER("User"),
     ORGANISATION("Organization");
 
     companion object {
@@ -15,7 +16,11 @@ data class Repo(
     val owner: Owner,
     val isPrivate: Boolean,
     val description: String?,
-    val isForked: Boolean
+    val isForked: Boolean,
+    val languages: List<Language>,
+    val starCount: Int,
+    val forkCount: Int,
+    val watchCount: Int
 )
 
 data class Owner(
@@ -24,4 +29,9 @@ data class Owner(
     val imageUrl: String,
     val url: String,
     val type: OwnerType
+)
+
+data class Language(
+    val title: String,
+    val byteCount: Int
 )

@@ -11,7 +11,11 @@ fun Repo.mapToDomain() = `in`.surajsau.trace.domain.model.Repo(
     owner = owner.mapToDomain(),
     isPrivate = private,
     description = description,
-    isForked = fork
+    isForked = fork,
+    languages = emptyList(),
+    watchCount = watchersCount,
+    forkCount = forksCount,
+    starCount = starGazersCount
 )
 
 fun Owner.mapToDomain() = `in`.surajsau.trace.domain.model.Owner(

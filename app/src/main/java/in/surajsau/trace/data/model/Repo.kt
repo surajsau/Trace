@@ -11,5 +11,9 @@ data class Repo(
     @JsonProperty("owner") val owner: Owner,
     @JsonProperty("private") val private: Boolean,
     @JsonProperty("description") val description: String?,
-    @JsonProperty("fork") val fork: Boolean
+    @JsonProperty("fork") val fork: Boolean,
+    @JsonProperty("language") val language: String?,
+    @JsonProperty("stargazers_count") val starGazersCount: Int,
+    @JsonProperty("watchers_count") val watchersCount: Int,
+    @JsonProperty("forks_count") val forksCount: Int
 )
