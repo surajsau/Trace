@@ -26,6 +26,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "app"
+    productFlavors {
+        github {
+            dimension "app"
+            applicationIdSuffix ".github"
+            versionNameSuffix "-github"
+        }
+        nintendo {
+            dimension "app"
+            applicationIdSuffix ".nintendo"
+            versionNameSuffix "-nintendo"
+        }
+    }
+
     dataBinding {
         enabled = true
     }
