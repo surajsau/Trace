@@ -16,9 +16,7 @@ class NotificationPagingSource constructor(
         val pageNumber = params.key ?: 0
         return notificationApi.notifications(pageNumber = pageNumber)
             .subscribeOn(schedulerProvider.io)
-            .map { it.map { data ->
-                Log.e("NotificationPaging", data.subject.type)
-                data.mapToDomain() } }
+            .map { it.map { data -> data.mapToDomain() } }
             .doOnError { LoadResult.Error<Int, Notification>(throwable = it) }
             .map {
                 LoadResult.Page(
