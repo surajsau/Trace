@@ -2,10 +2,7 @@ package `in`.surajsau.trace.data
 
 import `in`.surajsau.trace.data.service.ApiService
 import `in`.surajsau.trace.data.service.V1ApiService
-import `in`.surajsau.trace.domain.Repository
-import `in`.surajsau.trace.domain.RepositoryImpl
 import com.facebook.stetho.okhttp3.StethoInterceptor
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,10 +16,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(ApplicationComponent::class)
 abstract class DataModule {
-
-    @Binds
-    @Singleton
-    abstract fun repository(repositoryImpl: RepositoryImpl): Repository
 
     companion object {
 
