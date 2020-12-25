@@ -13,11 +13,13 @@ class NewGamesFragment : Fragment<FragmentNewGamesBinding>() {
 
     private val viewModel: NewGamesFragmentViewModel by viewModels()
 
+    private val adapter by lazy { NewGamesAdapter() }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.games
-            .subscribe()
+            .subscribe{ adapter.submitData(lifecycle = lifecycle, pagingData = it) }
             .disposeBy(disposables)
 
         viewModel.onViewCreated()

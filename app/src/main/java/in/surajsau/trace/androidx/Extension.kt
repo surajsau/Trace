@@ -1,7 +1,11 @@
 package `in`.surajsau.trace.androidx
 
 import `in`.surajsau.trace.App
+import android.graphics.Outline
 import android.util.TypedValue
+import android.view.View
+import android.view.ViewOutlineProvider
+import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -25,3 +29,13 @@ val Int.dp: Dp
     get() = this.toFloat().dp
 
 fun RecyclerView.ViewHolder.getImageDrawable(@DrawableRes id: Int) = ContextCompat.getDrawable(itemView.context, id)
+
+fun ImageView.setCornerRadius(corner: Dp) {
+    outlineProvider = object : ViewOutlineProvider() {
+        override fun getOutline(view: View?, outline: Outline?) {
+            view ?: return
+            outline?.setRoundRect(0, 0, view.width, (view.height + corner.value).toInt(), corner.value)
+        }
+    }
+    clipToOutline = true
+}

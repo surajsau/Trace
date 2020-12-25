@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:1028954119670:android:697f43ed6e2c2ea2d93bd7",
         "android_client_info": {
-          "package_name": "in.surajsau.trace"
+          "package_name": "in.surajsau.trace.nintendo"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "1028954119670-ch92m7nk6b3oi4p4nfv4svis655hfed0.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "in.surajsau.trace",
+            "package_name": "in.surajsau.trace.nintendo",
             "certificate_hash": "44ee6420e0c9fb4c5a5b6994d732d9b0f031bda4"
           }
         },
