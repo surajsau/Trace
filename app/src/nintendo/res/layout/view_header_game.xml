@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_view_item_ripple"
+        android:padding="16dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/content_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="スーパ・ニンテンドー・ワールドDirect"
+            android:textSize="18sp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/color_text"
+            android:textStyle="bold"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/content_release_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/content_title"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/color_text"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            tools:text="２０２０・９・２０"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/content_image"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toBottomOf="@id/content_release_date"
+            android:layout_marginTop="8dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/content_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/content_image"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"
+            android:textColor="@color/color_text"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/content_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/content_image"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"
+            android:text="サイトへ"
+            android:textColor="@color/color_text_gray"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

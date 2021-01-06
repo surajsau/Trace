@@ -12,11 +12,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.ImageLoader
 import coil.request.ImageRequest
+import io.reactivex.rxjava3.subjects.PublishSubject
 import kotlin.properties.Delegates
 
 class NewGamesAdapter constructor(
     private val imageLoader: ImageLoader
 ) : RecyclerView.Adapter<NewGamesAdapter.ViewHolder>() {
+
+    val itemClicked = PublishSubject.create<Long>()
 
     var items: List<Content> by Delegates.observable(emptyList()) { _, oldList, newList ->
         DiffUtil.calculateDiff(object : DiffUtil.Callback() {
@@ -56,12 +59,21 @@ class NewGamesAdapter constructor(
         fun bind(item: Content) {
             binding.contentTitle.text = item.formalName
             binding.contentImage.setCornerRadius(corner = 8.dp)
+            binding.root.tag = item.id
 
-            imageLoader.enqueue(request = ImageRequest.Builder(itemView.context)
-                .data(data = item.heroBannerUrl)
-                .target(binding.contentImage)
-                .build()
+            imageLoader.enqueue(
+                request = ImageRequest.Builder(itemView.context)
+                    .data(data = item.heroBannerUrl)
+                    .target(binding.contentImage)
+                    .build()
             )
+
+            binding.root.setOnClickListener {
+                val id = it.tag as? Long ?: return@setOnClickListener
+                this@NewGamesAdapter.itemClicked.onNext(id)
+            }
+
+            binding.executePendingBindings()
         }
     }
 }

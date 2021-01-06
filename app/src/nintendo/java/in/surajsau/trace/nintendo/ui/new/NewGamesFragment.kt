@@ -2,10 +2,13 @@ package `in`.surajsau.trace.nintendo.ui.new
 
 import `in`.surajsau.trace.R
 import `in`.surajsau.trace.androidx.Fragment
+import `in`.surajsau.trace.androidx.disposeBy
 import `in`.surajsau.trace.databinding.FragmentNewGamesBinding
 import `in`.surajsau.trace.nintendo.ui.main.MainActivityViewModel
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,6 +33,15 @@ class NewGamesFragment : Fragment<FragmentNewGamesBinding>() {
                 adapter.items = it
             }
         )
+
+        adapter.itemClicked
+            .subscribe {
+                val uri = Uri.parse("https://ec.nintendo.com/JP/ja/titles/$it")
+                val intent = CustomTabsIntent.Builder()
+                    .build()
+                intent.launchUrl(requireContext(), uri)
+            }
+            .disposeBy(disposables)
 
         viewModel.onViewCreated()
     }
