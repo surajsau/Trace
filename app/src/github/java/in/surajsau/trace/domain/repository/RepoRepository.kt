@@ -10,6 +10,7 @@ import androidx.paging.PagingData
 import androidx.paging.rxjava3.flowable
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.subjects.BehaviorSubject
 import javax.inject.Inject
 
@@ -30,6 +31,8 @@ interface RepoRepository {
     fun watchRepos(): Observable<PagingData<Repo>>
 
     fun watchPinnedRepos(): Observable<List<Repo>>
+
+    fun fetchRepoDetail(url: String): Single<Repo>
 }
 
 class RepoRepositoryImpl @Inject constructor(
@@ -55,6 +58,11 @@ class RepoRepositoryImpl @Inject constructor(
         return repoApi.repositories(pageSize = 10, type = RepoType.OWNER.value)
             .doOnSuccess { pinnedRepos.onNext(it.map { data -> data.mapToDomain() }) }
             .ignoreElement()
+    }
+
+    override fun fetchRepoDetail(url: String): Single<Repo> {
+        return repoApi.repositoryDetail(url = url)
+            .map { it.mapToDomain() }
     }
 
     override fun watchRepos(): BehaviorSubject<PagingData<Repo>> = repos

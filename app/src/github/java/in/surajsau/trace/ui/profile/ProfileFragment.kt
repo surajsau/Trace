@@ -47,13 +47,14 @@ class ProfileFragment : Fragment<FragmentProfileBinding>() {
 
         viewModel.model.observe(
             viewLifecycleOwner,
-            Observer { model ->
+            { model ->
                 binding.profileHeader.let {
                     it.profileName.text = model.profileName
                     it.profileOrganisation.text = model.profileOrganisation
                     it.profileLocation.text = model.profileLocation
                     it.profileHandle.text = model.profileHandle
 
+                    it.profilePicture.cornerRadius = 8.dp
                     imageLoader.enqueue(
                         request = ImageRequest.Builder(requireContext())
                             .data(data = model.profileImage)

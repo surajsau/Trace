@@ -10,7 +10,7 @@
         android:padding="16dp"
         android:background="@drawable/bg_pinned_repository">
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <in.surajsau.trace.androidx.RoundedImageView
             android:id="@+id/repo_user_image"
             android:layout_width="16dp"
             android:layout_height="16dp"

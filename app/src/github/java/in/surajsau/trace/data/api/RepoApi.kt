@@ -18,4 +18,7 @@ interface RepoApi {
 
     @GET
     fun languages(@Url url: String)
+
+    @GET
+    fun repositoryDetail(@Url url: String): Single<Repo>
 }

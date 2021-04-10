@@ -9,7 +9,7 @@
         android:background="@color/white"
         android:padding="16dp">
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <in.surajsau.trace.androidx.RoundedImageView
             android:id="@+id/profile_picture"
             android:layout_width="60dp"
             android:layout_height="60dp"

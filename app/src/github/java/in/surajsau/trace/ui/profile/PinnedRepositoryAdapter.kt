@@ -1,6 +1,7 @@
 package `in`.surajsau.trace.ui.profile
 
 import `in`.surajsau.trace.R
+import `in`.surajsau.trace.androidx.dp
 import `in`.surajsau.trace.databinding.ViewPinnedRepositoryBinding
 import `in`.surajsau.trace.domain.model.Repo
 import android.view.LayoutInflater
@@ -65,6 +66,8 @@ class PinnedRepositoryAdapter constructor(
             binding.starCount.text = "${item.starCount}"
             binding.language.text = item.language
             binding.repoOwner.text = item.repoOwner
+
+            binding.repoUserImage.cornerRadius = 4.dp
 
             imageLoader.enqueue(
                 request = ImageRequest.Builder(itemView.context)
