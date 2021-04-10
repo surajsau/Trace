@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="nintendo_red">#FB0000</color>
+    <color name="color_text">#3C3C3C</color>
+    <color name="color_text_gray">#B4B4B4</color>
+    <color name="color_unselected_tab_text">#B1B1B1</color>
+    
+    <color name="tab_games">#008A5C</color>
+    <color name="tab_apps">#008A5C</color>
+    <color name="tab_movies">#D90055</color>
+    <color name="tab_books">#0078D0</color>
+
+    <color name="tab_unselected_text">#5E6369</color>
+</resources>

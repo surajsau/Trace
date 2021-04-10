@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:1028954119670:android:697f43ed6e2c2ea2d93bd7",
         "android_client_info": {
-          "package_name": "in.surajsau.trace.nintendo"
+          "package_name": "in.surajsau.trace"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "1028954119670-ch92m7nk6b3oi4p4nfv4svis655hfed0.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "in.surajsau.trace.nintendo",
+            "package_name": "in.surajsau.trace",
             "certificate_hash": "44ee6420e0c9fb4c5a5b6994d732d9b0f031bda4"
           }
         },
@@ -63,6 +63,50 @@
           "client_type": 1,
           "android_info": {
             "package_name": "in.surajsau.trace.github",
+            "certificate_hash": "44ee6420e0c9fb4c5a5b6994d732d9b0f031bda4"
+          }
+        },
+        {
+          "client_id": "1028954119670-g49eb54lah20c9vj0l2acesh42fjdm0i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwVYQG5Nd_STDHKJE8UBQKf0yeERxRVAk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1028954119670-g49eb54lah20c9vj0l2acesh42fjdm0i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1028954119670-olvur329rhckt6fssico80v0ie8227n6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "in.surajsau.hibiki"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1028954119670:android:24b0a5df7b9023fdd93bd7",
+        "android_client_info": {
+          "package_name": "in.surajsau.trace.playstore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1028954119670-uh76r33hhl6cr0p051d34kfqaljqe68c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.surajsau.trace.playstore",
             "certificate_hash": "44ee6420e0c9fb4c5a5b6994d732d9b0f031bda4"
           }
         },

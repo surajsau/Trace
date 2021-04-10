@@ -39,6 +39,11 @@ android {
             applicationIdSuffix ".nintendo"
             versionNameSuffix "-nintendo"
         }
+        playstore {
+            dimension "app"
+            applicationIdSuffix ".playstore"
+            versionNameSuffix "-playstore"
+        }
     }
 
     dataBinding {
