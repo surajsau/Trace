@@ -6,13 +6,17 @@ import android.view.MenuItem
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
 
 class MainActivityViewModel @ViewModelInject constructor(
     private val resourceProvider: ResourceProvider
 ) : ViewModel() {
 
-    val tabs = MutableLiveData<MainActivityTabs>(MainActivityTabs.GameTabs)
-    val tabColor = MutableLiveData<Int>()
+    private val _tab = MutableLiveData<MainActivityTabs>(MainActivityTabs.GameTabs)
+
+    val tabs = _tab.map { it.tabs }
+    val tabColor = _tab.map { resourceProvider.getColor(it.colorRes) }
+    val searchCardText = _tab.map { resourceProvider.getString(it.searchCardTextRes) }
 
     fun onCreate() {
     }
@@ -20,23 +24,19 @@ class MainActivityViewModel @ViewModelInject constructor(
     fun onTabSelected(it: MenuItem) {
         when (it.itemId) {
             R.id.action_apps -> {
-                tabs.value = MainActivityTabs.AppsTabs
-                tabColor.value = resourceProvider.getColor(R.color.tab_apps)
+                _tab.value = MainActivityTabs.AppsTabs
             }
 
             R.id.action_games -> {
-                tabs.postValue(MainActivityTabs.GameTabs)
-                tabColor.value = resourceProvider.getColor(R.color.tab_games)
+                _tab.value = MainActivityTabs.GameTabs
             }
 
             R.id.action_books -> {
-                tabs.postValue(MainActivityTabs.MoviesTabs)
-                tabColor.value = resourceProvider.getColor(R.color.tab_books)
+                _tab.value = MainActivityTabs.BooksTabs
             }
 
             R.id.action_movies -> {
-                tabs.postValue(MainActivityTabs.MoviesTabs)
-                tabColor.value = resourceProvider.getColor(R.color.tab_movies)
+                _tab.value = MainActivityTabs.MoviesTabs
             }
         }
     }

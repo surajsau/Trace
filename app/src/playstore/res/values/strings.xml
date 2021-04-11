@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Trace Nintendo</string>
+
+    <string name="search_apps">Search for apps &amp; games</string>
+    <string name="search_games">Search for apps &amp; games</string>
+    <string name="search_movies">Search Movies &amp; TV</string>
+    <string name="search_books">Search Books</string>
 </resources>

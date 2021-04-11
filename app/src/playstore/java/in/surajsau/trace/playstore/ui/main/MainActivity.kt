@@ -5,6 +5,7 @@ import `in`.surajsau.trace.databinding.ActivityMainBinding
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.forEach
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,11 +30,13 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.tabs.observe(
             this,
-            Observer { mainTabs ->
+            Observer { tabs ->
                 binding.tabs.removeAllTabs()
-                mainTabs.tabs.forEach { tab -> binding.tabs.addTab(binding.tabs.newTab().setText(tab.title)) }
+                tabs.forEach { tab -> binding.tabs.addTab(binding.tabs.newTab().setText(tab.title)) }
             }
         )
+
+        viewModel.searchCardText.observe(this, Observer { binding.searchCardText.text = it })
 
         viewModel.tabColor.observe(
             this,
