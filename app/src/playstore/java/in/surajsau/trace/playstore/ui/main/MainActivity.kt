@@ -43,6 +43,10 @@ class MainActivity : AppCompatActivity() {
             Observer { binding.tabs.setSelectedTabIndicatorColor(it) }
         )
 
+        binding.searchCard.setOnClickListener {
+
+        }
+
         viewModel.onCreate()
     }
 }
