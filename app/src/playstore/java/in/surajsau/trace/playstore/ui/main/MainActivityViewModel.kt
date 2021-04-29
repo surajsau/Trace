@@ -18,6 +18,8 @@ class MainActivityViewModel @ViewModelInject constructor(
     val tabColor = _tab.map { resourceProvider.getColor(it.colorRes) }
     val searchCardText = _tab.map { resourceProvider.getString(it.searchCardTextRes) }
 
+    val openSearchActivity = MutableLiveData<MainActivityTabs>()
+
     fun onCreate() {
     }
 
@@ -39,5 +41,10 @@ class MainActivityViewModel @ViewModelInject constructor(
                 _tab.value = MainActivityTabs.MoviesTabs
             }
         }
+    }
+
+    fun onSearchCardClicked() {
+        val currentTab = _tab.value ?: return
+        openSearchActivity.value = currentTab
     }
 }

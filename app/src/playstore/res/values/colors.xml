@@ -11,4 +11,6 @@
     <color name="tab_books">#0078D0</color>
 
     <color name="tab_unselected_text">#5E6369</color>
+
+    <color name="search_divider_color">#DADCE0</color>
 </resources>

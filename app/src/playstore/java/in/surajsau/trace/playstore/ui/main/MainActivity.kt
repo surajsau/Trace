@@ -2,10 +2,10 @@ package `in`.surajsau.trace.playstore.ui.main
 
 import `in`.surajsau.trace.R
 import `in`.surajsau.trace.databinding.ActivityMainBinding
+import `in`.surajsau.trace.playstore.ui.search.SearchActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.forEach
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,9 +43,12 @@ class MainActivity : AppCompatActivity() {
             Observer { binding.tabs.setSelectedTabIndicatorColor(it) }
         )
 
-        binding.searchCard.setOnClickListener {
+        viewModel.openSearchActivity.observe(
+            this,
+            Observer { startActivity(SearchActivity.createIntent(this, it)) }
+        )
 
-        }
+        binding.searchCard.setOnClickListener { viewModel.onSearchCardClicked() }
 
         viewModel.onCreate()
     }

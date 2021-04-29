@@ -1,8 +1,9 @@
 package `in`.surajsau.trace.playstore.ui.main
 
 import `in`.surajsau.trace.R
+import java.io.Serializable
 
-sealed class MainActivityTabs(val tabs: List<MainActivityTab>, val searchCardTextRes: Int, val colorRes: Int) {
+sealed class MainActivityTabs(val tabs: List<MainActivityTab>, val searchCardTextRes: Int, val colorRes: Int) : Serializable {
 
     object GameTabs : MainActivityTabs(
         tabs = listOf(GamesForYou, GamesTop, GamesKids, GamesPremium, GamesCategories, GamesEditorChoice),
@@ -29,7 +30,7 @@ sealed class MainActivityTabs(val tabs: List<MainActivityTab>, val searchCardTex
     )
 }
 
-sealed class MainActivityTab(val title: String)
+sealed class MainActivityTab(val title: String) : Serializable
 
 object GamesForYou : MainActivityTab("For you")
 object GamesTop : MainActivityTab("Top charts")
